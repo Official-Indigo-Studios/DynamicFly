@@ -1,0 +1,15 @@
+# Plugin settings
+plugin-settings:
+  GriefPrevention:
+    # Determines if this hook should be enabled. Setting this to false means no claim checks will happen for this plugin.
+    enabled: true
+    # Lowest perms possible needed to fly. Possible values (highest to lowest): MANAGE, BUILD, CONTAINERS, ACCESS
+    lowest-perms-to-fly: ACCESS
+  WorldGuard:
+    enabled: true
+  BentoBox:
+    enabled: true
+
+# Players that have flight on due to someone running "/fly on PlayerName" will not
+# have their flight disabled if they move into an area with different claims if set to true.
+force-fly-always-global: true

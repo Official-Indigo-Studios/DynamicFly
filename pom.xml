@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>games.indigo</groupId>
+    <artifactId>dynamicfly</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+    <repositories>
+        <!-- Spigot -->
+        <repository>
+            <id>spigot-repo</id>
+            <url>https://hub.spigotmc.org/nexus/content/repositories/snapshots/</url>
+        </repository>
+        <!-- GriefPrevention -->
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <!-- WorldGuard -->
+        <repository>
+            <id>sk89q-repo</id>
+            <url>https://maven.enginehub.org/repo/</url>
+        </repository>
+        <!-- Bentobox (BSkyblock base) -->
+        <repository>
+            <id>codemc-repo</id>
+            <url>https://repo.codemc.org/repository/maven-public/</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- Spigot -->
+        <dependency>
+            <groupId>org.spigotmc</groupId>
+            <artifactId>spigot-api</artifactId>
+            <version>1.15.1-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- GriefPrevention -->
+        <dependency>
+            <groupId>com.github.TechFortress</groupId>
+            <artifactId>GriefPrevention</artifactId>
+            <version>16.12.0</version>
+        </dependency>
+        <!-- WorldGuard -->
+        <dependency>
+            <groupId>com.sk89q.worldguard</groupId>
+            <artifactId>worldguard-bukkit</artifactId>
+            <version>7.0.1</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- Bentobox (BSkyblock base) -->
+        <dependency>
+            <groupId>world.bentobox</groupId>
+            <artifactId>bentobox</artifactId>
+            <version>1.11.0-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!--
+        <dependency>
+            <artifactId>.</artifactId>
+            <groupId>.</groupId>
+            <version>.</version>
+            <scope>system</scope>
+            <systemPath>C:/Users/Birman/Google Drive/Minecraft Jar Build Paths/worldguard-bukkit-7.0.1.jar</systemPath>
+        </dependency>-->
+        <!-- Villages
+        <dependency>
+            <artifactId>.</artifactId>
+            <groupId>.</groupId>
+            <version>.</version>
+            <scope>system</scope>
+            <systemPath>C:/Users/Birman/Google Drive/Minecraft Jar Build Paths/Villages-1.0.5-SNAPSHOT.jar</systemPath>
+        </dependency>
+        <- LuckPerms
+        <dependency>
+            <groupId>me.lucko.luckperms</groupId>
+            <artifactId>luckperms-api</artifactId>
+            <version>4.4</version>
+            <scope>provided</scope>
+        </dependency> -->
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                </configuration>
+            </plugin>
+        </plugins>
+
+        <finalName>DynamicFly</finalName>
+    </build>
+</project>

@@ -1,0 +1,42 @@
+main: me.thebirmanator.dynamicfly.DynamicFly
+name: DynamicFly
+version: 1.2
+author: TheBirmanator
+api-version: 1.14
+description: Flight manager for Indigo Games
+softdepend: [GriefPrevention, WorldGuard, BentoBox]
+commands:
+  fly:
+    usage: /<command> [player] [ON|OFF]
+    description: Allows to toggle fly
+    permission: dynamicfly.command.fly
+    permission-message: §cSorry, you do not have permission to use this command.
+permissions:
+  dynamicfly.*:
+    description: Gives access to all DynamicFly commands and permisions
+    children:
+      dynamicfly.command.fly: true
+      dynamicfly.command.fly.others: true
+      dynamicfly.type.global: true
+      dynamicfly.safelogin: true
+      dynamicfly.command.fly.reload: true
+  dynamicfly.command.fly:
+    description: Gives access to the /fly command
+  dynamicfly.command.fly.reload:
+    description: Gives access to reload this plugin's config file
+  dynamicfly.command.fly.others:
+    description: Gives access to set other players' flight state
+    children:
+      dynamicfly.command.fly: true
+  dynamicfly.type.global:
+    description: Gives ability to fly anywhere
+    children:
+      dynamicfly.type.claims.trusted: true
+  dynamicfly.type.claims.trusted:
+    description: Gives the ability to fly in claims where the player is trusted
+    children:
+      dynamicfly.type.claims: true
+  dynamicfly.type.claims:
+    description: Gives the ability to fly in claims that the player owns
+  dynamicfly.safelogin:
+    description: When logging in, if the player was flying, they will automatically reenable flight. If they are in a place where they cannot fly, they will slowfall to the ground instead.
