@@ -1,4 +1,4 @@
-package ltd.indigostudios.dynamicfly.api.hooks.evaluators;
+package ltd.indigostudios.dynamicfly.api.hooks;
 
 import ltd.indigostudios.dynamicfly.api.FlightManager;
 import ltd.indigostudios.dynamicfly.api.enums.FlightPermission;
@@ -9,7 +9,16 @@ import world.bentobox.bentobox.database.objects.Island;
 
 import java.util.Optional;
 
-public class BBFlightEvaluator implements FlightEvaluator {
+public class BentoBoxHook extends PluginHook implements Configurable {
+
+    public BentoBoxHook() {
+        super(BentoBox.getInstance());
+    }
+
+    @Override
+    public String getSettingsPath() {
+        return mainPath + "." + getPlugin().getName();
+    }
 
     @Override
     public boolean canFlyHere(Location location, Player player) {

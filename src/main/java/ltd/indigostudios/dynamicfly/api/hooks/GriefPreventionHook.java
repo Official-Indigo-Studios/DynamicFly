@@ -1,15 +1,23 @@
-package ltd.indigostudios.dynamicfly.api.hooks.evaluators;
+package ltd.indigostudios.dynamicfly.api.hooks;
 
-import me.ryanhamshire.GriefPrevention.Claim;
-import me.ryanhamshire.GriefPrevention.GriefPrevention;
 import ltd.indigostudios.dynamicfly.api.FlightManager;
 import ltd.indigostudios.dynamicfly.api.enums.FlightPermission;
-import ltd.indigostudios.dynamicfly.api.hooks.PluginHook;
+import me.ryanhamshire.GriefPrevention.Claim;
+import me.ryanhamshire.GriefPrevention.GriefPrevention;
 import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
-public class GPFlightEvaluator implements FlightEvaluator {
+public class GriefPreventionHook extends PluginHook implements Configurable {
+
+    public GriefPreventionHook() {
+        super(GriefPrevention.instance);
+    }
+
+    @Override
+    public String getSettingsPath() {
+        return mainPath + "." + getPlugin().getName();
+    }
 
     @Override
     public boolean canFlyHere(Location location, Player player) {
@@ -34,7 +42,7 @@ public class GPFlightEvaluator implements FlightEvaluator {
     }
 
     private boolean hasPerms(Claim claim, Player player) {
-        String perm = PluginHook.getHook(GriefPrevention.instance).getSetting("lowest-perms-to-fly", String.class);
+        String perm = getSetting("lowest-perms-to-fly", String.class);
         // if they return null, they have permission
         switch (perm.toUpperCase()) {
             case "MANAGE":

@@ -1,9 +1,9 @@
 main: ltd.indigostudios.dynamicfly.DynamicFly
 name: DynamicFly
-version: 2.0
+version: 2.1
 author: TheBirmanator
 api-version: 1.15
-description: Flight manager for Indigo Games
+description: A modern solution for moderated flight
 softdepend: [GriefPrevention, WorldGuard, BentoBox]
 commands:
   fly:

@@ -1,6 +1,5 @@
 package ltd.indigostudios.dynamicfly.listeners;
 
-import ltd.indigostudios.dynamicfly.api.hooks.evaluators.FlightEvaluator;
 import ltd.indigostudios.dynamicfly.api.hooks.PluginHook;
 import ltd.indigostudios.dynamicfly.api.events.ClaimChangeEvent;
 import org.bukkit.Bukkit;
@@ -28,10 +27,9 @@ public class PlayerMoveListener implements Listener {
         Set<Plugin> plugins = PluginHook.getHookedPlugins();
         for (Plugin plugin : plugins) {
             PluginHook hook = PluginHook.getHook(plugin);
-            if (hook.isEnabled()) {
-                FlightEvaluator flightEvaluator = hook.getFlightEvaluator();
-                Object fromClaim = flightEvaluator.getGenericClaimAt(from);
-                Object toClaim = flightEvaluator.getGenericClaimAt(to);
+            if (hook.isRegistered()) {
+                Object fromClaim = hook.getGenericClaimAt(from);
+                Object toClaim = hook.getGenericClaimAt(to);
                 // one claim or zero claims can be null (but not both)
                 if (!(fromClaim == null && toClaim == null)) {
                     // one claim is null and the other is not, or neither are null and they are different claims

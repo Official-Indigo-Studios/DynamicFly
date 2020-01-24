@@ -1,7 +1,6 @@
 package ltd.indigostudios.dynamicfly.api;
 
 import ltd.indigostudios.dynamicfly.api.enums.FlightPermission;
-import ltd.indigostudios.dynamicfly.api.hooks.evaluators.FlightEvaluator;
 import ltd.indigostudios.dynamicfly.DynamicFly;
 import ltd.indigostudios.dynamicfly.api.hooks.PluginHook;
 import org.bukkit.Location;
@@ -30,8 +29,7 @@ public class FlightManager {
 
     public boolean canFlyHere(Location location) {
         for (PluginHook pluginHook : PluginHook.getDetectedHooks()) {
-            FlightEvaluator fe = pluginHook.getFlightEvaluator();
-            if (fe.canFlyHere(location, player)) {
+            if (pluginHook.canFlyHere(location, player)) {
                 return true;
             }
         }

@@ -1,4 +1,4 @@
-package ltd.indigostudios.dynamicfly.api.hooks.evaluators;
+package ltd.indigostudios.dynamicfly.api.hooks;
 
 import com.sk89q.worldedit.bukkit.BukkitAdapter;
 import com.sk89q.worldguard.LocalPlayer;
@@ -15,9 +15,18 @@ import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 
-public class WGFlightEvaluator implements FlightEvaluator {
+public class WorldGuardHook extends PluginHook implements Configurable {
 
     public static StateFlag FLIGHT;
+
+    public WorldGuardHook() {
+        super(WorldGuardPlugin.inst());
+    }
+
+    @Override
+    public String getSettingsPath() {
+        return mainPath + "." + getPlugin().getName();
+    }
 
     @Override
     public boolean canFlyHere(Location location, Player player) {
