@@ -9,11 +9,14 @@ import com.sk89q.worldguard.protection.flags.Flag;
 import com.sk89q.worldguard.protection.flags.StateFlag;
 import com.sk89q.worldguard.protection.flags.registry.FlagConflictException;
 import com.sk89q.worldguard.protection.flags.registry.FlagRegistry;
+import com.sk89q.worldguard.protection.regions.ProtectedRegion;
 import ltd.indigostudios.dynamicfly.api.FlightManager;
 import ltd.indigostudios.dynamicfly.api.enums.FlightPermission;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+
+import java.util.Set;
 
 public class WorldGuardHook extends PluginHook implements Configurable {
 
@@ -52,7 +55,12 @@ public class WorldGuardHook extends PluginHook implements Configurable {
 
     @Override
     public Object getGenericClaimAt(Location location) {
-        return WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery().getApplicableRegions(BukkitAdapter.adapt(location)).getRegions();
+        Set<ProtectedRegion> regions = WorldGuard.getInstance().getPlatform().getRegionContainer().createQuery().getApplicableRegions(BukkitAdapter.adapt(location)).getRegions();
+        // no regions here, return null for the move listener/claim change events
+        if (regions.size() < 1) {
+            return null;
+        }
+        return regions;
     }
 
     public static void loadFlag() {

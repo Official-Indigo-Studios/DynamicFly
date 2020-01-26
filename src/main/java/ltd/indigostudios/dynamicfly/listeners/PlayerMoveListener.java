@@ -1,5 +1,8 @@
 package ltd.indigostudios.dynamicfly.listeners;
 
+import ltd.indigostudios.dynamicfly.api.events.ClaimEnterEvent;
+import ltd.indigostudios.dynamicfly.api.events.ClaimLeaveEvent;
+import ltd.indigostudios.dynamicfly.api.events.ClaimTransitionEvent;
 import ltd.indigostudios.dynamicfly.api.hooks.PluginHook;
 import ltd.indigostudios.dynamicfly.api.events.ClaimChangeEvent;
 import org.bukkit.Bukkit;
@@ -32,9 +35,16 @@ public class PlayerMoveListener implements Listener {
                 Object toClaim = hook.getGenericClaimAt(to);
                 // one claim or zero claims can be null (but not both)
                 if (!(fromClaim == null && toClaim == null)) {
-                    // one claim is null and the other is not, or neither are null and they are different claims
-                    if ((fromClaim == null || toClaim == null) || !fromClaim.equals(toClaim)) {
-                        Bukkit.getPluginManager().callEvent(new ClaimChangeEvent(event.getPlayer(), plugin, from, to));
+                    Bukkit.getPluginManager().callEvent(new ClaimChangeEvent(event.getPlayer(), plugin, from, to));
+                    // one claim is null and the other is not
+                    if ((fromClaim == null || toClaim == null)) {
+                        if (fromClaim == null) {
+                            Bukkit.getPluginManager().callEvent(new ClaimEnterEvent(event.getPlayer(), plugin, from, to));
+                        } else {
+                            Bukkit.getPluginManager().callEvent(new ClaimLeaveEvent(event.getPlayer(), plugin, from, to));
+                        }
+                    } else if (!fromClaim.equals(toClaim)) { // neither are null and they are different claims
+                        Bukkit.getPluginManager().callEvent(new ClaimTransitionEvent(event.getPlayer(), plugin, from, to));
                     }
                 }
             }
