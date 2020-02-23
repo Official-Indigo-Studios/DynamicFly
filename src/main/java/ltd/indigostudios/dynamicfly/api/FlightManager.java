@@ -36,9 +36,9 @@ public class FlightManager {
         return false;
     }
 
-    public void toggleFly(boolean canFly) {
+    public void toggleFly(boolean canFly, boolean changeIfInAir) {
         player.setAllowFlight(canFly);
-        if (!player.isOnGround()) {
+        if (!player.isOnGround() && changeIfInAir) {
             player.setFlying(canFly);
         }
     }

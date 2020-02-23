@@ -4,7 +4,7 @@ The modern solution for player flight management.
 Conveniently and unobtrusively toggles players' fly in areas where they do and don't have permission.
 
 ## Configuration
-There is one primary configuration file found in the plugins folder. This file contains every configurable option in the plugin including items and language options.
+There is one configuration file found in the plugins folder. This file contains options for different plugin checks.
 
 Configuration files:
 - [config.yml](https://github.com/Official-Indigo-Studios/DynamicFly/blob/master/src/main/resources/config.yml "Config.yml")

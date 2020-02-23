@@ -68,7 +68,7 @@ public class FlyCmd implements CommandExecutor, TabCompleter {
         }
 
         // toggle fly
-        flightManager.toggleFly(flightMode);
+        flightManager.toggleFly(flightMode, true);
         flightManager.setWantsToFly(flightMode);
         if (flightManager.isFlightToggledOn()) {
             target.sendMessage(Messages.FLY_CMD_ON.getFullMessage());

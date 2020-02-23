@@ -19,7 +19,8 @@ public class PlayerJoinListener implements Listener {
                 FlightManager flightManager = new FlightManager(player);
                 if (flightManager.canFlyHere(player.getLocation())) {
                     flightManager.setWantsToFly(true);
-                    flightManager.toggleFly(true);
+                    flightManager.toggleFly(true, true);
+                    player.setFlying(true);
                     player.sendMessage(Messages.FLIGHT_ON.getFullMessage());
                 } else {
                     player.addPotionEffect(new PotionEffect(PotionEffectType.SLOW_FALLING, 100, 0, true, false));

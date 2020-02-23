@@ -24,7 +24,7 @@ public class ClaimChangeListener implements Listener {
             FlightManager fm = new FlightManager(event.getPlayer());
             if (fm.canFlyHere(event.getTo())) {
                 if (fm.wantsToFly() && !fm.isFlightToggledOn()) {
-                    fm.toggleFly(true);
+                    fm.toggleFly(true, false);
                     event.getPlayer().sendMessage(Messages.FLIGHT_ON.getFullMessage());
                 }
             } else {
@@ -32,7 +32,7 @@ public class ClaimChangeListener implements Listener {
                     if (fm.isFlightToggledOn()) {
                         event.getPlayer().sendMessage(Messages.FLIGHT_OFF.getFullMessage());
                     }
-                    fm.toggleFly(false);
+                    fm.toggleFly(false, false);
                 }
             }
         }
